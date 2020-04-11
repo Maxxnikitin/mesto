@@ -13,11 +13,20 @@
 </head>
 <body>
   <div class='page'>
-    <header class='header'>
+    <header class='header header_margins'>
+      <img class='logo' src='./images/logo/logo.svg' alt='логотип сайта.'>
     </header>
 
     <main class='content'>
-      <section>
+      <section class='profile'>
+        <div class='profile__user'>
+          <img class='profile__avatar' src='./images/profile/avatar.jpg' alt='аватар.'>
+          <div class='profile__info'>
+            <h1 class='profile__name'>Жак-Ив Кусто<button class='button button__edit' type='button' onclick='location.href="#"'></button></h1>
+            <p class='profile__about'>Исследователь океана</p>
+          </div>
+        </div>
+        <button class='button button__add' type='button' onclick='location.href="#"'></button>
       </section>
 
     <footer class='footer'>
