@@ -1,5 +1,6 @@
 .button__add {
   background-image: url(../../../images/button/add-button.svg);
+  background-color: black;
   width: 150px;
   height: 50px;
 }

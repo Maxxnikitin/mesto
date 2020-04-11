@@ -1,0 +1,10 @@
+@import url(./__image/photo__image.css);
+@import url(./__title/photo__title.css);
+@import url(./__name/photo__name.css);
+
+.photo {
+  max-width: 282px;
+  height: 361px;
+  background-color: #fff;
+  border-radius: 10%;
+}
