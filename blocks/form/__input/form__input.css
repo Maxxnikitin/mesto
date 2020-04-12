@@ -1,0 +1,10 @@
+.form__input {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  color: #000;
+  border: none;
+  margin-bottom: 0.5rem;
+}
