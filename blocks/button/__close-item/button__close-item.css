@@ -1,0 +1,14 @@
+.button__close-item {
+  background-image: url(../../../images/button/close-icon.png);
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center;
+  width: 40.7px;
+  height: 40.7px;
+  position: fixed;
+  top: calc(50% - 202px);
+  left: calc(50% + 212px);
+}
+
+.button__close-item:hover {
+  opacity: .6;
+}

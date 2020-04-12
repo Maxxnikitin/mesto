@@ -5,3 +5,7 @@
   height: 18.13px;
   margin-right: 1.125rem;
 }
+
+.button__like:hover {
+  opacity: .6;
+}
