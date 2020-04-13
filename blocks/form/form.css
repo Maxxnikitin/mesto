@@ -12,3 +12,20 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 }
+
+@media (max-width: 550px) {
+  .form {
+    width: 348px;
+    height: 267px;
+    top: calc(50% - 267px / 2);
+    left: calc(50% - 348px / 2);
+  }
+}
+@media (max-width: 400px) {
+  .form {
+    width: 286px;
+    height: 214px;
+    top: calc(50% - 214px / 2);
+    left: calc(50% - 286px / 2);
+  }
+}

@@ -1,11 +1,20 @@
 .button__edit {
   background-image: url(../../../images/button/edit-button.svg);
   background-color: black;
+  background-size: cover;
   width: 24px;
   height: 24px;
   margin-left: 1.0625rem;
+  border: none;
 }
 
 .button__edit:hover {
   opacity: .6;
+}
+
+@media (max-width: 500px) {
+  .button__edit {
+    width: 18px;
+    height: 18px;
+  }
 }
