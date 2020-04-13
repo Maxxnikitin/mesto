@@ -3,3 +3,9 @@
   position: relative;
   margin-left: 1.875rem;
 }
+
+@media (max-width: 615px) {
+  .profile__info {
+    text-align: center;
+  }
+}
