@@ -4,3 +4,9 @@
   max-width: 882px;
   margin: 0 auto 3.75rem;
 }
+
+@media (max-width: 500px) {
+  .footer {
+    margin: 0 auto 3rem;
+  }
+}

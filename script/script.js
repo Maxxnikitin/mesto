@@ -26,4 +26,3 @@ function formSubmitHandler (evt) {
     removePopup();
 }
 formElement.addEventListener('submit', formSubmitHandler);
-
