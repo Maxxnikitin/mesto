@@ -1,4 +1,4 @@
-.button__submit {
+.button_submit {
   width: 358px;
   height: 50px;
   margin: 19px 36px 36.5px;
@@ -12,12 +12,12 @@
   color: #FFF;
   border: none;
 }
-.button__submit:hover {
+.button_submit:hover {
   opacity: .8;
 }
 
 @media (max-width: 550px) {
-  .button__submit {
+  .button_submit {
     width: 276px;
     height: 50px;
     margin-top: 20px;
@@ -26,7 +26,7 @@
   }
 }
 @media (max-width: 400px) {
-  .button__submit {
+  .button_submit {
     width: 244px;
     height: 40px;
     margin: 15px 18px auto;

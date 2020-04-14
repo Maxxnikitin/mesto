@@ -1,8 +1,8 @@
-@import url(./__add/button__add.css);
-@import url(./__edit/button__edit.css);
-@import url(./__like/button__like.css);
-@import url(./__submit/button__submit.css);
-@import url(./__close-item/button__close-item.css);
+@import url(./_add/button_add.css);
+@import url(./_edit/button_edit.css);
+@import url(./_like/button_like.css);
+@import url(./_submit/button_submit.css);
+@import url(./_close-item/button_close-item.css);
 
 .button {
   cursor: pointer;

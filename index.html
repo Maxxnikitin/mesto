@@ -24,77 +24,75 @@
           <div class='profile__info'>
             <div class='profile__title'>
               <h1 class='profile__name'>Жак-Ив Кусто</h1>
-              <button class='button button__edit' type='button' onclick='location.href="#"'></button>
+              <button class='button button_edit' type='button'></button>
             </div>
             <p class='profile__about'>Исследователь океана</p>
           </div>
         </div>
-        <button class='button button__add' type='button' onclick='location.href="#"'></button>
+        <button class='button button_add' type='button'></button>
       </section>
 
       <section class='photos photos_margins'>
-        <div class='photo'>
+        <article class='photo'>
           <img class='photo__image' src='./images/photos/altai.jpg' alt='фото Алтая.'>
           <div class='photo__title'>
             <h2 class='photo__name'>Алтай</h2>
-            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+            <button class='button button_like' type='button'></button>
           </div>
-        </div>
-        <div class='photo'>
+        </article>
+        <article class='photo'>
           <img class='photo__image' src='./images/photos/baikal.jpg' alt='фото Байкала.'>
           <div class='photo__title'>
             <h2 class='photo__name'>Байкал</h2>
-            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+            <button class='button button_like' type='button'></button>
           </div>
-        </div>
-        <div class='photo'>
+        </article>
+        <article class='photo'>
           <img class='photo__image' src='./images/photos/dombai.jpg' alt='фото Домбая.'>
           <div class='photo__title'>
             <h2 class='photo__name'>Домбай</h2>
-            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+            <button class='button button_like' type='button'></button>
           </div>
-        </div>
-        <div class='photo'>
+        </article>
+        <article class='photo'>
           <img class='photo__image' src='./images/photos/elbrus.jpg' alt='фото Эльбруса.'>
           <div class='photo__title'>
             <h2 class='photo__name'>Эльбрус</h2>
-            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+            <button class='button button_like' type='button'></button>
           </div>
-        </div>
-        <div class='photo'>
+        </article>
+        <article class='photo'>
           <img class='photo__image' src='./images/photos/karachaevsk.jpg' alt='фото Карачаевска.'>
           <div class='photo__title'>
             <h2 class='photo__name'>Карачаевск</h2>
-            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+            <button class='button button_like' type='button'></button>
           </div>
-        </div>
-        <div class='photo'>
+        </article>
+        <article class='photo'>
           <img class='photo__image' src='./images/photos/khakassia.jpg' alt='фото Хакасии.'>
           <div class='photo__title'>
             <h2 class='photo__name'>Хакасия</h2>
-            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+            <button class='button button_like' type='button'></button>
           </div>
-        </div>
-      </section>
-
-      <section class='popup'>
-        <button class='button button__close-item'></button>
-        <form class='form'>
-          <h2 class='form__title'>Редактировать профиль</h2>
-          <fieldset class='form__fieldset'>
-            <input class='form__input' id='fullname' type='text' name='fullname'>
-          </fieldset>
-          <fieldset class='form__fieldset'>
-            <input class='form__input' id='about' type='text' name='about'>
-          </fieldset>
-          <button class='button button__submit' type='submit'>Сохранить</button>
-        </form>
+        </article>
       </section>
     </main>
 
     <footer class='footer'>
       <p class='footer__copyright'>&copy; 2020 Mesto Russia</p>
     </footer>
+
+    <section class='popup'>
+      <button class='button button_close-item' type='button'></button>
+      <form class='form'>
+        <legend class='form__title'>Редактировать профиль</legend>
+        <fieldset class='form__fieldset'>
+          <input class='form__input' id='fullname' type='text' name='fullname'>
+          <input class='form__input' id='about' type='text' name='about'>
+        </fieldset>
+        <button class='button button_submit' type='submit'>Сохранить</button>
+      </form>
+    </section>
   </div>
 <script src='./script/script.js'></script>
 </body>

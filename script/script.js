@@ -1,4 +1,4 @@
-const buttonEdit = document.querySelector('.button__edit');
+const buttonEdit = document.querySelector('.button_edit');
 const popup = document.querySelector('.popup');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
@@ -12,7 +12,7 @@ function addPopup () {
 }
 buttonEdit.addEventListener('click', addPopup);
 
-const buttonClose = document.querySelector('.button__close-item');
+const buttonClose = document.querySelector('.button_close-item');
 function removePopup () {
   popup.classList.remove('popup_opened');
 }

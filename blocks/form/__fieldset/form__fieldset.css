@@ -1,17 +1,13 @@
 .form__fieldset {
   padding: 0;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, .2);
   max-width: 358px;
-  margin: 0 auto 29px;
+  margin: 0 auto;
 }
 
 @media (max-width: 550px) {
   .form__fieldset {
-    margin: 0 29px 29px;
-  }
-  .form__fieldset:last-of-type {
-    margin-bottom: 0;
+    margin: 0 29px;
   }
 }
 @media (max-width: 400px) {
