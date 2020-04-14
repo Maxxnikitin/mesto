@@ -6,9 +6,10 @@
   line-height: 17px;
   color: #000;
   border: none;
-  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   width: 100%;
-  margin-bottom: 8px;
+  margin-bottom: 29px;
+  padding-bottom: 9px;
 }
 
 @media (max-width: 400px) {
