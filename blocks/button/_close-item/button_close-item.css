@@ -2,12 +2,12 @@
   background-image: url(../../../images/button/close-icon.png);
   background-color: rgba(0, 0, 0, 0);
   background-position: center;
-  width: 40.7px;
-  height: 40.7px;
-  position: fixed;
-  top: calc(50% - 202px);
-  left: calc(50% + 212px);
+  width: 40px;
+  height: 40px;
   border: none;
+  position: relative;
+  top: -37px;
+  right: -37px;
 }
 
 .button_close-item:hover {
@@ -16,25 +16,21 @@
 
 @media (max-width: 550px) {
   .button_close-item {
+    background-color: rgba(0, 0, 0, 1);
+    top: 10px;
+    right: 10px;
     width: 30px;
     height: 30px;
-    top: calc(50% - 164px);
-    left: calc(50% + 174px);
   }
 }
 @media (max-width: 450px) {
   .button_close-item {
-    background-color: rgba(0, 0, 0, 1);
     z-index: 1;
-    top: calc(50% - 124px);
-    left: calc(50% + 134px);
   }
 }
 @media (max-width: 400px) {
   .button_close-item {
     width: 20px;
     height: 20px;
-    top: calc(50% - 100px);
-    left: calc(50% + 115px);
   }
 }

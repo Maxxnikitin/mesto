@@ -12,8 +12,14 @@
   padding-bottom: 9px;
 }
 
+@media (max-width: 550px) {
+  .form__input {
+    margin-bottom: 20px;
+  }
+}
 @media (max-width: 400px) {
   .form__input {
+    padding-bottom: 6px;
     font-size: 11px;
     line-height: 13px;
   }
