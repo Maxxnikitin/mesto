@@ -1,9 +1,9 @@
-let buttonEdit = document.querySelector('.button__edit');
-let popup = document.querySelector('.popup');
-let profileName = document.querySelector('.profile__name');
-let profileAbout = document.querySelector('.profile__about');
-let nameInput = document.querySelector('#fullname');
-let jobInput = document.querySelector('#about');
+const buttonEdit = document.querySelector('.button__edit');
+const popup = document.querySelector('.popup');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about');
+const nameInput = document.querySelector('#fullname');
+const jobInput = document.querySelector('#about');
 
 function addPopup () {
   popup.classList.add('popup_opened');
@@ -12,13 +12,13 @@ function addPopup () {
 }
 buttonEdit.addEventListener('click', addPopup);
 
-let buttonClose = document.querySelector('.button__close-item');
+const buttonClose = document.querySelector('.button__close-item');
 function removePopup () {
   popup.classList.remove('popup_opened');
 }
 buttonClose.addEventListener('click', removePopup);
 
-let formElement = document.querySelector('.form');
+const formElement = document.querySelector('.form');
 function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
