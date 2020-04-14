@@ -1,0 +1,9 @@
+.photo__name {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  margin: 0 auto 0 1.3125rem;
+  padding: 0;
+}

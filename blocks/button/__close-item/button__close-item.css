@@ -1,0 +1,40 @@
+.button__close-item {
+  background-image: url(../../../images/button/close-icon.png);
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center;
+  width: 40.7px;
+  height: 40.7px;
+  position: fixed;
+  top: calc(50% - 202px);
+  left: calc(50% + 212px);
+  border: none;
+}
+
+.button__close-item:hover {
+  opacity: .6;
+}
+
+@media (max-width: 550px) {
+  .button__close-item {
+    width: 30px;
+    height: 30px;
+    top: calc(50% - 164px);
+    left: calc(50% + 174px);
+  }
+}
+@media (max-width: 450px) {
+  .button__close-item {
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 1;
+    top: calc(50% - 124px);
+    left: calc(50% + 134px);
+  }
+}
+@media (max-width: 400px) {
+  .button__close-item {
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 100px);
+    left: calc(50% + 115px);
+  }
+}

@@ -1,0 +1,21 @@
+.profile__about {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: #FFF;
+  margin: 0.6rem 0 0;
+}
+
+@media (max-width: 615px) {
+  .profile__about {
+    margin-bottom: 36px;
+  }
+}
+@media (max-width: 500px) {
+  .profile__about {
+    font-size: 1.1667rem;
+    line-height: 1.4167rem;
+    margin: 0 auto 27px;
+  }
+}

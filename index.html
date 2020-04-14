@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class='html' lang='ru'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel='stylesheet' href='pages/index.css'>
+  <meta name='description' content='Страница о путешествии по России'>
+  <meta name='keywords' content='HTML5, CSS'>
+  <meta name='author' content='Максим Никитин'>
+  <title>Mesto</title>
+  <base target='_blank'>
+</head>
+<body>
+  <div class='page'>
+    <header class='header header_margins'>
+      <img class='logo' src='./images/logo/logo.svg' alt='логотип сайта.'>
+    </header>
+
+    <main class='content'>
+      <section class='profile'>
+        <div class='profile__user'>
+          <img class='profile__avatar' src='./images/profile/avatar.jpg' alt='аватар.'>
+          <div class='profile__info'>
+            <div class='profile__title'>
+              <h1 class='profile__name'>Жак-Ив Кусто</h1>
+              <button class='button button__edit' type='button' onclick='location.href="#"'></button>
+            </div>
+            <p class='profile__about'>Исследователь океана</p>
+          </div>
+        </div>
+        <button class='button button__add' type='button' onclick='location.href="#"'></button>
+      </section>
+
+      <section class='photos photos_margins'>
+        <div class='photo'>
+          <img class='photo__image' src='./images/photos/altai.jpg' alt='фото Алтая.'>
+          <div class='photo__title'>
+            <h2 class='photo__name'>Алтай</h2>
+            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+          </div>
+        </div>
+        <div class='photo'>
+          <img class='photo__image' src='./images/photos/baikal.jpg' alt='фото Байкала.'>
+          <div class='photo__title'>
+            <h2 class='photo__name'>Байкал</h2>
+            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+          </div>
+        </div>
+        <div class='photo'>
+          <img class='photo__image' src='./images/photos/dombai.jpg' alt='фото Домбая.'>
+          <div class='photo__title'>
+            <h2 class='photo__name'>Домбай</h2>
+            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+          </div>
+        </div>
+        <div class='photo'>
+          <img class='photo__image' src='./images/photos/elbrus.jpg' alt='фото Эльбруса.'>
+          <div class='photo__title'>
+            <h2 class='photo__name'>Эльбрус</h2>
+            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+          </div>
+        </div>
+        <div class='photo'>
+          <img class='photo__image' src='./images/photos/karachaevsk.jpg' alt='фото Карачаевска.'>
+          <div class='photo__title'>
+            <h2 class='photo__name'>Карачаевск</h2>
+            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+          </div>
+        </div>
+        <div class='photo'>
+          <img class='photo__image' src='./images/photos/khakassia.jpg' alt='фото Хакасии.'>
+          <div class='photo__title'>
+            <h2 class='photo__name'>Хакасия</h2>
+            <button class='button button__like' type='button' onclick='location.href="#"'></button>
+          </div>
+        </div>
+      </section>
+
+      <section class='popup'>
+        <button class='button button__close-item'></button>
+        <form class='form'>
+          <h2 class='form__title'>Редактировать профиль</h2>
+          <fieldset class='form__fieldset'>
+            <input class='form__input' id='fullname' type='text' name='fullname'>
+          </fieldset>
+          <fieldset class='form__fieldset'>
+            <input class='form__input' id='about' type='text' name='about'>
+          </fieldset>
+          <button class='button button__submit' type='submit'>Сохранить</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class='footer'>
+      <p class='footer__copyright'>&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+<script src='./script/script.js'></script>
+</body>
+</html>

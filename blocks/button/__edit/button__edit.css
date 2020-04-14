@@ -1,0 +1,35 @@
+.button__edit {
+  background-image: url(../../../images/button/edit-button.svg);
+  background-color: black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 10px;
+  width: 24px;
+  height: 24px;
+  margin-left: 1.0625rem;
+  margin-top: 0.4rem;
+  border: 1px solid white;
+}
+
+.button__edit:hover {
+  opacity: .6;
+}
+
+@media (max-width: 900px) {
+  .button__edit {
+    margin-top: 0.4rem;
+  }
+}
+@media (max-width: 615px) {
+  .button__edit {
+    margin-top: 1.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .button__edit {
+    width: 18px;
+    height: 18px;
+    background-size: 7.5px 7.5px;
+  }
+}

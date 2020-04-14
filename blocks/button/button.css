@@ -1,0 +1,13 @@
+@import url(./__add/button__add.css);
+@import url(./__edit/button__edit.css);
+@import url(./__like/button__like.css);
+@import url(./__submit/button__submit.css);
+@import url(./__close-item/button__close-item.css);
+
+.button {
+  cursor: pointer;
+  padding: 0;
+  -webkit-transition: opacity .5s;
+  -o-transition: opacity .5s;
+  transition: opacity .5s;
+}
