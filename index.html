@@ -22,7 +22,10 @@
         <div class='profile__user'>
           <img class='profile__avatar' src='./images/profile/avatar.jpg' alt='аватар.'>
           <div class='profile__info'>
-            <h1 class='profile__name'>Жак-Ив Кусто<button class='button button__edit' type='button' onclick='location.href="#"'></button></h1>
+            <div class='profile__title'>
+              <h1 class='profile__name'>Жак-Ив Кусто</h1>
+              <button class='button button__edit' type='button' onclick='location.href="#"'></button>
+            </div>
             <p class='profile__about'>Исследователь океана</p>
           </div>
         </div>
@@ -74,15 +77,15 @@
         </div>
       </section>
 
-      <section class='popup popup_opened'>
-        <button class='button button__close-item' type='reset'></button>
+      <section class='popup'>
+        <button class='button button__close-item'></button>
         <form class='form'>
           <h2 class='form__title'>Редактировать профиль</h2>
           <fieldset class='form__fieldset'>
-            <input class='form__input' type='text' name='fullname' value='Жак-Ив Кусто'>
+            <input class='form__input' id='fullname' type='text' name='fullname'>
           </fieldset>
           <fieldset class='form__fieldset'>
-            <input class='form__input' type='text' name='about' value='Исследователь океана'>
+            <input class='form__input' id='about' type='text' name='about'>
           </fieldset>
           <button class='button button__submit' type='submit'>Сохранить</button>
         </form>
@@ -93,5 +96,6 @@
       <p class='footer__copyright'>&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+<script src='./script/script.js'></script>
 </body>
 </html>
