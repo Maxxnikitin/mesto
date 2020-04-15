@@ -1,4 +1,4 @@
-@import url(./_margins/photos_margins.css);
+@import url(./__margins/photos__margins.css);
 
 .photos {
   display: -ms-grid;
@@ -11,17 +11,17 @@
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .photos {
-    -ms-grid-columns: (1fr)[2];
+    -ms-grid-columns: 1fr 1.1667rem 1fr;
     grid-template-columns: repeat(2, 1fr);
-    -ms-grid-rows: (1fr)[3];
+    -ms-grid-rows: 1fr 1.1667rem 1fr 1.1667rem 1fr;
     grid-template-rows: repeat(3, 1fr);
   }
 }
-@media (max-width: 450px) {
+@media (max-width: 515px) {
   .photos {
-    -ms-grid-columns: (1fr)[1];
+    -ms-grid-columns: (1fr);
     grid-template-columns: repeat(1, 1fr);
     -ms-grid-rows: 1fr 1.6667rem 1fr 1.6667rem 1fr 1.6667rem 1fr 1.6667rem 1fr 1.6667rem 1fr;
     grid-template-rows: repeat(6, 1fr);

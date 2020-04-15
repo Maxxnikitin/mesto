@@ -23,11 +23,6 @@
     height: 30px;
   }
 }
-@media (max-width: 450px) {
-  .button_close-item {
-    z-index: 1;
-  }
-}
 @media (max-width: 400px) {
   .button_close-item {
     width: 20px;

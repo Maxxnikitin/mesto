@@ -1,0 +1,14 @@
+.header__logo {
+  margin-bottom: 37px;
+}
+
+@media (max-width: 900px) {
+  .header__logo {
+    margin-left: 27px;
+  }
+}
+@media (max-width: 500px) {
+  .header__logo {
+    margin-bottom: 29px;
+  }
+}

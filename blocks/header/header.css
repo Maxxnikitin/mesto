@@ -1,4 +1,5 @@
-@import url(./_margins/header_margins.css);
+@import url(./__margins/header__margins.css);
+@import url(./__logo/header__logo.css);
 
 .header {
   max-width: 882px;
