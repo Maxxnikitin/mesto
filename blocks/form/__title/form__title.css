@@ -4,20 +4,20 @@
   font-size: 24px;
   line-height: 29px;
   color: #000;
-  margin: -5px auto 47px 36px;
+  margin: 0 0 47px;
 }
 
 @media (max-width: 550px) {
   .form__title {
     font-size: 19px;
     font-weight: 23px;
-    margin: 0 auto 37px 29px;
+    margin: 0 0 37px;
   }
 }
 @media (max-width: 400px) {
   .form__title {
     font-size: 15px;
     font-weight: 18px;
-    margin: 0 auto 28px 23px;
+    margin: 0 0 28px;
   }
 }

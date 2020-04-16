@@ -1,5 +1,3 @@
-@import url(./__margins/photos__margins.css);
-
 .photos {
   display: -ms-grid;
   display: grid;

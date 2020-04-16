@@ -1,9 +1,9 @@
-.header__margins {
+.page__margins {
   margin: 45px auto 36px;
 }
 
 @media (max-width: 500px) {
-  .header__margins {
+  .page__margins {
     margin: 28px auto 38px;
   }
 }
