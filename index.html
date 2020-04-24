@@ -80,15 +80,27 @@
       <p class='footer__copyright'>&copy; 2020 Mesto Russia</p>
     </footer>
 
-    <section class='popup'>
-      <form class='form' name="form" method="post" action="#">
-        <button class='button button_close-item' type='button'></button>
+    <section class='popup' id='popup__profile'>
+      <form class='form' name='form' method='post' action='#'>
+        <button class='button button_close-item' id='close__profile' type='button'></button>
         <fieldset class='form__fieldset'>
-          <legend class='form__title'>Редактировать профиль</legend>
+          <legend class='form__title form__title_place_profile'>Редактировать профиль</legend>
           <input class='form__input' id='fullname' type='text' name='fullname'>
           <input class='form__input' id='about' type='text' name='about'>
         </fieldset>
         <button class='button button_submit' type='submit'>Сохранить</button>
+      </form>
+    </section>
+
+    <section class='popup' id='popup__new-images'>
+      <form class='form' name='form' method='post' action='#'>
+        <button class='button button_close-item' id='close__new-images' type='button'></button>
+        <fieldset class='form__fieldset'>
+          <legend class='form__title form__title_place_images'>Новое место</legend>
+          <input class='form__input' id='place-title' type='text' name='place-title' placeholder='Название'>
+          <input class='form__input' id='image-link' type='text' name='image-link' placeholder='Ссылка на картинку'>
+        </fieldset>
+        <button class='button button_submit' type='submit'>Создать</button>
       </form>
     </section>
   </div>
