@@ -1,3 +1,6 @@
+@import url(./__header/page__header.css);
+@import url(./__footer/page__footer.css);
+
 .page {
   width: 100%;
   font-family: 'Inter', Arial, sans-serif;

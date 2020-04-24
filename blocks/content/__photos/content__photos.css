@@ -1,9 +1,9 @@
-.photos_margins {
+.content__photos {
   margin: 3.1875rem auto 4.0625rem;
 }
 
 @media (max-width: 500px) {
-  .photos_margins {
+  .content__photos {
     margin: 3rem auto 4rem;
   }
 }

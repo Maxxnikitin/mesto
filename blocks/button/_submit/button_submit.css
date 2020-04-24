@@ -1,35 +1,34 @@
-.button__submit {
+.button_submit {
   width: 358px;
-  height: 50px;
+  min-height: 50px;
   margin: 19px 36px 36.5px;
   background-color: black;
   border-radius: 2px;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
   color: #FFF;
   border: none;
 }
-.button__submit:hover {
+.button_submit:hover {
   opacity: .8;
 }
 
 @media (max-width: 550px) {
-  .button__submit {
-    width: 276px;
-    height: 50px;
-    margin-top: 20px;
+  .button_submit {
+    width: 290px;
+    margin: 0 auto;
     font-size: 16px;
     line-height: 18px;
   }
 }
 @media (max-width: 400px) {
-  .button__submit {
-    width: 244px;
-    height: 40px;
-    margin: 15px 18px auto;
+  .button_submit {
+    width: 200px;
+    min-height: 40px;
+    margin: 19px auto 0;
     font-size: 14px;
     line-height: 16px;
   }
