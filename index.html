@@ -40,6 +40,7 @@
             <h2 class='photo__name'></h2>
             <button class='button button_like' type='button'></button>
           </div>
+          <button class='button button_del' type='button'></button>
         </article>
       </template>
     </main>
@@ -49,7 +50,7 @@
     </footer>
 
     <section class='popup' id='popup__profile'>
-      <form class='form' name='form' method='post' action='#'>
+      <form class='form' id='form-edit' name='form' method='post' action='#'>
         <button class='button button_close-item' id='close__profile' type='button'></button>
         <fieldset class='form__fieldset'>
           <legend class='form__title form__title_place_profile'>Редактировать профиль</legend>
@@ -61,7 +62,7 @@
     </section>
 
     <section class='popup' id='popup__new-images'>
-      <form class='form' name='form' method='post' action='#'>
+      <form class='form' id='form-image' name='form' method='post' action='#'>
         <button class='button button_close-item' id='close__new-images' type='button'></button>
         <fieldset class='form__fieldset'>
           <legend class='form__title form__title_place_images'>Новое место</legend>
