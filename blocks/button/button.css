@@ -4,6 +4,7 @@
 @import url(./_like-active/button_like-active.css);
 @import url(./_submit/button_submit.css);
 @import url(./_close-item/button_close-item.css);
+@import url(./_del/button_del.css);
 
 .button {
   cursor: pointer;

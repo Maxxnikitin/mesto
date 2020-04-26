@@ -10,7 +10,8 @@ const titleInput = document.querySelector('#place-title');
 const linkInput = document.querySelector('#image-link');
 const buttonCloseProfile = document.querySelector('#close__profile');
 const buttonCloseNewImages = document.querySelector('#close__new-images');
-const formElement = document.querySelector('.form');
+const formElement = document.querySelector('#form-edit');
+const formImageElement = document.querySelector('#form-image');
 
 //Массив изначальных фотографий
 const initialCards = [
@@ -56,13 +57,17 @@ initialCards.forEach(function(item) {
   photoElement.querySelector('.photo__image').src = item.link;
   photoElement.querySelector('.photo__image').alt = item.alt;
   photoElement.querySelector('.photo__name').textContent = item.name;
+
+  //Функция активации кнопки like
   photoElement.querySelector('.button_like').addEventListener('click', function(evt) {
-    const eventTarget = evt.target;
-    eventTarget.classList.toggle('button_like-active');
+  const eventTarget = evt.target;
+  eventTarget.classList.toggle('button_like-active');
   })
 
   photoCard.append(photoElement);
 });
+
+
 
 //Отвечает за открытие/закрытие попапа с редактированием профиля
 function changePopupProfile () {
@@ -82,13 +87,27 @@ function changePopupNewImages () {
   linkInput.value = '';
 }
 
+//Функция для сохранения редактирования профиля
 function formSubmitHandler (evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileAbout.textContent = jobInput.value;
     changePopupProfile();
 }
+
+//Функия для сохранения новой фотографии
+function submitImage (evt) {
+  evt.preventDefault();
+  const photoElement = photoTemplate.cloneNode(true);
+  photoElement.querySelector('.photo__image').src = linkInput.value;
+  photoElement.querySelector('.photo__image').alt = '"Фото " + linkInput.value + "."';
+  photoElement.querySelector('.photo__name').textContent = titleInput.value;
+  photoCard.prepend(photoElement);
+  changePopupNewImages();
+}
+
 formElement.addEventListener('submit', formSubmitHandler);
+formImageElement.addEventListener('submit', submitImage);
 buttonEdit.addEventListener('click', changePopupProfile);
 buttonAdd.addEventListener('click', changePopupNewImages);
 buttonCloseProfile.addEventListener('click', changePopupProfile);
