@@ -12,6 +12,58 @@ const buttonCloseProfile = document.querySelector('#close__profile');
 const buttonCloseNewImages = document.querySelector('#close__new-images');
 const formElement = document.querySelector('.form');
 
+//Массив изначальных фотографий
+const initialCards = [
+  {
+      name: 'Алтай',
+      link: './images/photos/altai.jpg',
+      alt: 'фото Алтая.'
+  },
+  {
+      name: 'Байкал',
+      link: './images/photos/baikal.jpg',
+      alt: 'Фото Байкала.'
+  },
+  {
+      name: 'Домбай',
+      link: './images/photos/dombai.jpg',
+      alt: 'Фото Домбая.'
+  },
+  {
+      name: 'Эльбрус',
+      link: './images/photos/elbrus.jpg',
+      alt: 'Фото Эльбруса.'
+  },
+  {
+      name: 'Карачаевск',
+      link: './images/photos/karachaevsk.jpg',
+      alt: 'Фото Карачаевска.'
+  },
+  {
+      name: 'Хакасия',
+      link: './images/photos/khakassia.jpg',
+      alt: 'Фото Хакасии.'
+  }
+];
+
+//Выбираем шаблон фотографий
+const photoTemplate = document.querySelector('#photo').content;
+const photoCard = document.querySelector('.photos');
+
+//Создаём цикл для перебора массива и добавления сразу 6-ти фотографий
+initialCards.forEach(function(item) {
+  const photoElement = photoTemplate.cloneNode(true);
+  photoElement.querySelector('.photo__image').src = item.link;
+  photoElement.querySelector('.photo__image').alt = item.alt;
+  photoElement.querySelector('.photo__name').textContent = item.name;
+  photoElement.querySelector('.button_like').addEventListener('click', function(evt) {
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle('button_like-active');
+  })
+
+  photoCard.append(photoElement);
+});
+
 //Отвечает за открытие/закрытие попапа с редактированием профиля
 function changePopupProfile () {
   if (popupProfile.classList.contains('popup_opened')) {
