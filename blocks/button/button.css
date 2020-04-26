@@ -1,6 +1,7 @@
 @import url(./_add/button_add.css);
 @import url(./_edit/button_edit.css);
 @import url(./_like/button_like.css);
+@import url(./_like-active/button_like-active.css);
 @import url(./_submit/button_submit.css);
 @import url(./_close-item/button_close-item.css);
 
@@ -9,6 +10,6 @@
   padding: 0;
   -webkit-transition: opacity .5s;
   -o-transition: opacity .5s;
-  transition: opacity .5s;
+  transition: .5s;
   outline: none;
 }
