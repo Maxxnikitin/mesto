@@ -60,8 +60,14 @@ initialCards.forEach(function(item) {
 
   //Функция активации кнопки like
   photoElement.querySelector('.button_like').addEventListener('click', function(evt) {
-  const eventTarget = evt.target;
-  eventTarget.classList.toggle('button_like-active');
+    const eventTarget = evt.target;
+    eventTarget.classList.toggle('button_like-active');
+  })
+
+  //Функция для удаления фотографий
+  photoElement.querySelector('.button_del').addEventListener('click', function(evt) {
+    const photoDel = evt.target;
+    photoDel.closest('.photo').remove();
   })
 
   photoCard.append(photoElement);
