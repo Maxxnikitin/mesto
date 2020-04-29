@@ -26,9 +26,9 @@
 }
 @media (max-width: 400px) {
   .button_submit {
-    width: 250px;
+    width: 200px;
     min-height: 40px;
-    margin: 0 auto;
+    margin: 19px auto 0;
     font-size: 14px;
     line-height: 16px;
   }

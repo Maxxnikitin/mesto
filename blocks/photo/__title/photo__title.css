@@ -8,5 +8,5 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 1.5rem auto; /*Я написал нужные стили в блоке photo__name*/
+  margin: 1.5rem auto;
 }

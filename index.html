@@ -31,64 +31,45 @@
       </section>
 
       <section class='photos content__photos'>
-        <article class='photo'>
-          <img class='photo__image' src='./images/photos/altai.jpg' alt='фото Алтая.'>
-          <div class='photo__title'>
-            <h2 class='photo__name'>Алтай</h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-        </article>
-        <article class='photo'>
-          <img class='photo__image' src='./images/photos/baikal.jpg' alt='фото Байкала.'>
-          <div class='photo__title'>
-            <h2 class='photo__name'>Байкал</h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-        </article>
-        <article class='photo'>
-          <img class='photo__image' src='./images/photos/dombai.jpg' alt='фото Домбая.'>
-          <div class='photo__title'>
-            <h2 class='photo__name'>Домбай</h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-        </article>
-        <article class='photo'>
-          <img class='photo__image' src='./images/photos/elbrus.jpg' alt='фото Эльбруса.'>
-          <div class='photo__title'>
-            <h2 class='photo__name'>Эльбрус</h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-        </article>
-        <article class='photo'>
-          <img class='photo__image' src='./images/photos/karachaevsk.jpg' alt='фото Карачаевска.'>
-          <div class='photo__title'>
-            <h2 class='photo__name'>Карачаевск</h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-        </article>
-        <article class='photo'>
-          <img class='photo__image' src='./images/photos/khakassia.jpg' alt='фото Хакасии.'>
-          <div class='photo__title'>
-            <h2 class='photo__name'>Хакасия</h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-        </article>
       </section>
+
+      <template id='photo'>
+        <article class='photo'>
+          <img class='photo__image'>
+          <div class='photo__title'>
+            <h2 class='photo__name'></h2>
+            <button class='button button_like' type='button'></button>
+          </div>
+          <button class='button button_del' type='button'></button>
+        </article>
+      </template>
     </main>
 
     <footer class='footer page__footer'>
-      <p class='footer__copyright'>&copy; 2020 Mesto Russia</p>
+      <p class='footer__copyright'>&copy; 2020 Maxim Nikitin</p>
     </footer>
 
-    <section class='popup'>
-      <form class='form' name="form" method="post" action="#">
-        <button class='button button_close-item' type='button'></button>
+    <section class='popup' id='popup__profile'>
+      <form class='form' id='form-edit' name='form' method='post' action='#'>
+        <button class='button button_close-item' id='close__profile' type='button'></button>
         <fieldset class='form__fieldset'>
-          <legend class='form__title'>Редактировать профиль</legend>
+          <legend class='form__title form__title_place_profile'>Редактировать профиль</legend>
           <input class='form__input' id='fullname' type='text' name='fullname'>
           <input class='form__input' id='about' type='text' name='about'>
         </fieldset>
         <button class='button button_submit' type='submit'>Сохранить</button>
+      </form>
+    </section>
+
+    <section class='popup' id='popup__new-images'>
+      <form class='form' id='form-image' name='form' method='post' action='#'>
+        <button class='button button_close-item' id='close__new-images' type='button'></button>
+        <fieldset class='form__fieldset'>
+          <legend class='form__title form__title_place_images'>Новое место</legend>
+          <input class='form__input' id='place-title' type='text' name='place-title' placeholder='Название'>
+          <input class='form__input' id='image-link' type='text' name='image-link' placeholder='Ссылка на картинку'>
+        </fieldset>
+        <button class='button button_submit' type='submit'>Создать</button>
       </form>
     </section>
   </div>
