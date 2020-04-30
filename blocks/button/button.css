@@ -5,6 +5,7 @@
 @import url(./_submit/button_submit.css);
 @import url(./_close-item/button_close-item.css);
 @import url(./_del/button_del.css);
+@import url(./_close-big/button_close-big.css);
 
 .button {
   cursor: pointer;
