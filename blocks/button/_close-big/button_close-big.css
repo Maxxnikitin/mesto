@@ -1,0 +1,25 @@
+.button_close-big {
+  background-image: url(../../../images/button/close-icon.png);
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  position: relative;
+  top: 0;
+  right: -40px;
+}
+
+.button_close-big:hover {
+  opacity: .6;
+}
+
+@media (max-width: 550px) {
+  .button_close-big {
+    width: 30px;
+    height: 30px;
+    background-size: 40px 40px;
+    top: 0;
+    right: -30px;
+  }
+}
