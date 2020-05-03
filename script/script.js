@@ -55,11 +55,11 @@ function changePopup (elem) {
 }
 
 //Функция создания карточки
-function addCard (name, link, alt) {
+function addCard (name, link) {
   const photoElement = photoTemplate.cloneNode(true);
   const image = photoElement.querySelector('.photo__image');
   image.src = link;
-  image.alt = `Фото ${alt}.`;
+  image.alt = `Фото ${name}.`;
   image.dataset.name = name;
   photoElement.querySelector('.photo__name').textContent = name;
 
@@ -88,13 +88,13 @@ function addCard (name, link, alt) {
 
 //Функция для добавления карточек из массива
 initialCards.forEach(function(item) {
-  photoCard.append(addCard(item.name, item.link, item.name));
+  photoCard.append(addCard(item.name, item.link));
 });
 
 //Функия для сохранения новой фотографии
 function submitImage (evt) {
   evt.preventDefault();
-  photoCard.prepend(addCard(titleInput.value, linkInput.value, titleInput.value));
+  photoCard.prepend(addCard(titleInput.value, linkInput.value));
   changePopup(popupNewImages);
 }
 
