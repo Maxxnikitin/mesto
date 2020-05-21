@@ -1,0 +1,10 @@
+@import url(./_place/form__input-error_place_name.css);
+@import url(./_place/form__input-error_place_description.css);
+
+.form__input-error {
+  position: absolute;
+  left: 0;
+  color: #ff0000;
+  font-size: 12px;
+  line-height: 15px;
+}

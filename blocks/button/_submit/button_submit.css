@@ -1,7 +1,7 @@
 .button_submit {
   width: 358px;
   min-height: 50px;
-  margin: 19px 36px 36.5px;
+  margin: 48px 36px auto;
   background-color: black;
   border-radius: 2px;
   font-style: normal;
@@ -20,6 +20,7 @@
   .button_submit {
     width: 290px;
     margin: 0 auto;
+    margin-top: 15px;
     font-size: 16px;
     line-height: 18px;
   }
@@ -28,7 +29,7 @@
   .button_submit {
     width: 200px;
     min-height: 40px;
-    margin: 19px auto 0;
+    margin: 29px auto 0;
     font-size: 14px;
     line-height: 16px;
   }

@@ -8,13 +8,22 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
   width: 100%;
-  margin-bottom: 29px;
+  margin-top: 29px;
   padding-bottom: 9px;
+}
+
+.form__input:active, :hover, :focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.form__input_type_error {
+  border-bottom: 1px solid #ff0000;
 }
 
 @media (max-width: 550px) {
   .form__input {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 }
 @media (max-width: 400px) {
