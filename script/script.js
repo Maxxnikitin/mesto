@@ -150,8 +150,8 @@ function submitImage (evt) {
   closePopup(popupNewImages);
 }
 
-//Функция проверки формы на наличие текста ошибок
-function checkError(elem) {
+//Функция удаления текста ошибок при открытии формы
+function removeError(elem) {
   const form = elem.querySelector(formObject.formSelector);
   const formInputs = Array.from(form.querySelectorAll(formObject.inputSelector));
   formInputs.forEach((formInput) => {
@@ -165,7 +165,7 @@ function openPopupProfile () {
   jobInput.value = profileAbout.textContent;
   if (errorName.classList.contains(formObject.errorClass) ||
     errorAbout.classList.contains(formObject.errorClass)) {
-    checkError(popupProfile);
+    removeError(popupProfile);
     openPopup(popupProfile);
   } else {
     openPopup(popupProfile);
@@ -178,7 +178,7 @@ function openPopupNewImages () {
   linkInput.value = '';
   if (errorPlaceTitle.classList.contains(formObject.errorClass) ||
     errorImageLink.classList.contains(formObject.errorClass)) {
-    checkError(popupNewImages);
+    removeError(popupNewImages);
     openPopup(popupNewImages);
   } else {
     openPopup(popupNewImages);
