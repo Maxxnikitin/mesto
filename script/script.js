@@ -19,6 +19,11 @@ const bigImageTitle = document.querySelector('.big-image__title');
 const overlayProfile = popupProfile.querySelector('.popup__overlay');
 const overlayNewImages = popupNewImages.querySelector('.popup__overlay');
 const overlayBigImage = popupBigImage.querySelector('.popup__overlay');
+const popups = Array.from(document.querySelectorAll('.popup'));
+const errorName = document.querySelector('#fullname-error');
+const errorAbout = document.querySelector('#about-error');
+const errorPlaceTitle = document.querySelector('#place-title-error');
+const errorImageLink = document.querySelector('#image-link-error');
 
 //Массив изначальных фотографий
 const initialCards = [
@@ -52,35 +57,37 @@ const initialCards = [
 const photoTemplate = document.querySelector('#photo').content;
 const photoCard = document.querySelector('.photos');
 
+//Функция закрытия попапов кнопкой Esc
+function escClose (evt) {
+  if (evt.key === 'Escape') {
+    popups.forEach((popup) => {
+      if (popup.classList.contains('popup_opened')) {
+        closePopup(popup);
+      }
+    });
+  }
+}
 
-//Функция закрытия попапа кнопкой Esc
-function closeEscape (popup) {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      popup.classList.remove("popup_opened");
-    }
-  });
+//Функция добавления слушателя кнопки Esc
+function addEscListener (popup) {
+  document.addEventListener('keydown', escClose);
 }
 
 //Функция удаления слушателя кнопки Esc
-function removeCloseEscape (popup) {
-  document.removeEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      popup.classList.remove("popup_opened");
-    }
-  });
+function removeEscListener (popup) {
+  document.removeEventListener('keydown', escClose);
 }
 
 //Отвечает за открытие попапов
 function openPopup (elem) {
   elem.classList.add('popup_opened');
-  closeEscape (elem);
+  addEscListener (elem);
 }
 
 //Отвечает за закрытие попапов
 function closePopup (elem) {
   elem.classList.remove('popup_opened');
-  removeCloseEscape (elem);
+  removeEscListener (elem);
 }
 
 //Функция создания карточки
@@ -92,26 +99,42 @@ function addCard (name, link) {
   image.dataset.name = name;
   photoElement.querySelector('.photo__name').textContent = name;
 
-  //Функция активации кнопки like
-  photoElement.querySelector('.button_like').addEventListener('click', function(evt) {
+  //функция активации кнопки like
+  function activeLike (evt) {
     const eventTarget = evt.target;
     eventTarget.classList.toggle('button_like-active');
-  });
+  }
+
+  //Функция добавления слушателя кнопке like
+  const buttonLike = photoElement.querySelector('.button_like');
+  buttonLike.addEventListener('click', activeLike);
 
   //Функция удаления фотографий
-  photoElement.querySelector('.button_del').addEventListener('click', function(evt) {
+  function removePhoto (evt) {
     const photoDel = evt.target;
     photoDel.closest('.photo').remove();
-  });
+    buttonLike.removeEventListener('click', activeLike);
+    photo.removeEventListener('click', zoomPhoto);
+    buttonDel.removeEventListener('click', removePhoto);
+  }
+
+  //Функция добавления слушателя кнопке удаления фото
+  const buttonDel = photoElement.querySelector('.button_del');
+  buttonDel.addEventListener('click', removePhoto);
 
   //Функция увеличения фотографий
-  photoElement.querySelector('.photo__image').addEventListener('click', function(evt) {
+  function zoomPhoto (evt) {
     const item = evt.target;
     bigImage.src = item.src;
     bigImage.alt = `Фото ${item.dataset.name}.`;
     bigImageTitle.textContent = item.dataset.name;
     openPopup(popupBigImage);
-  });
+  }
+
+  //Функция добавления слушателя фотографиям
+  const photo = photoElement.querySelector('.photo__image');
+  photo.addEventListener('click', zoomPhoto);
+
   return photoElement;
 }
 
@@ -127,20 +150,39 @@ function submitImage (evt) {
   closePopup(popupNewImages);
 }
 
+//Функция проверки формы на наличие текста ошибок
+function checkError(elem) {
+  const form = elem.querySelector(formObject.formSelector);
+  const formInputs = Array.from(form.querySelectorAll(formObject.inputSelector));
+  formInputs.forEach((formInput) => {
+    hideInputError(form, formInput, formObject);
+  });
+}
+
 //Отвечает за открытие попапа с редактированием профиля
 function openPopupProfile () {
-  openPopup(popupProfile);
-  if (popupProfile.classList.contains('popup_opened')) {
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileAbout.textContent;
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileAbout.textContent;
+  if (errorName.classList.contains(formObject.errorClass) ||
+    errorAbout.classList.contains(formObject.errorClass)) {
+    checkError(popupProfile);
+    openPopup(popupProfile);
+  } else {
+    openPopup(popupProfile);
   }
 }
 
 //Отвечает за открытие попапа с добавлением фото
 function openPopupNewImages () {
-  openPopup(popupNewImages);
   titleInput.value = '';
   linkInput.value = '';
+  if (errorPlaceTitle.classList.contains(formObject.errorClass) ||
+    errorImageLink.classList.contains(formObject.errorClass)) {
+    checkError(popupNewImages);
+    openPopup(popupNewImages);
+  } else {
+    openPopup(popupNewImages);
+  }
 }
 
 //Функция для сохранения редактирования профиля
