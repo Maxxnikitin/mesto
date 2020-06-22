@@ -1,8 +1,11 @@
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
+
 const buttonEdit = document.querySelector('.button_edit');
 const buttonAdd = document.querySelector('.button_add');
 const popupProfile = document.querySelector('#popup-profile');
 const popupNewImages = document.querySelector('#popup-new-images');
-const popupBigImage = document.querySelector('#popup-big-image');
+export const popupBigImage = document.querySelector('#popup-big-image');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const nameInput = document.querySelector('#fullname');
@@ -20,10 +23,22 @@ const overlayProfile = popupProfile.querySelector('.popup__overlay');
 const overlayNewImages = popupNewImages.querySelector('.popup__overlay');
 const overlayBigImage = popupBigImage.querySelector('.popup__overlay');
 const popups = Array.from(document.querySelectorAll('.popup'));
+const forms = Array.from(document.querySelectorAll('.form'));
+const errors = Array.from(document.querySelectorAll('.form__input-error'));
+const inputs = Array.from(document.querySelectorAll('.form__input'));
 const errorName = document.querySelector('#fullname-error');
 const errorAbout = document.querySelector('#about-error');
 const errorPlaceTitle = document.querySelector('#place-title-error');
 const errorImageLink = document.querySelector('#image-link-error');
+const photoCard = document.querySelector('.photos');
+const formObject = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.button_submit',
+  inactiveButtonClass: 'form__submit-inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active',
+};
 
 //Массив изначальных фотографий
 const initialCards = [
@@ -53,10 +68,6 @@ const initialCards = [
   }
 ];
 
-//Выбираем шаблон фотографий
-const photoTemplate = document.querySelector('#photo').content;
-const photoCard = document.querySelector('.photos');
-
 //Функция закрытия попапов кнопкой Esc
 function escClose (evt) {
   if (evt.key === 'Escape') {
@@ -79,7 +90,7 @@ function removeEscListener (popup) {
 }
 
 //Отвечает за открытие попапов
-function openPopup (elem) {
+export function openPopup (elem) {
   elem.classList.add('popup_opened');
   addEscListener (elem);
 }
@@ -90,72 +101,34 @@ function closePopup (elem) {
   removeEscListener (elem);
 }
 
-//Функция создания карточки
-function addCard (name, link) {
-  const photoElement = photoTemplate.cloneNode(true);
-  const image = photoElement.querySelector('.photo__image');
-  image.src = link;
-  image.alt = `Фото ${name}.`;
-  image.dataset.name = name;
-  photoElement.querySelector('.photo__name').textContent = name;
-
-  //функция активации кнопки like
-  function activeLike (evt) {
-    const eventTarget = evt.target;
-    eventTarget.classList.toggle('button_like-active');
-  }
-
-  //Функция добавления слушателя кнопке like
-  const buttonLike = photoElement.querySelector('.button_like');
-  buttonLike.addEventListener('click', activeLike);
-
-  //Функция удаления фотографий
-  function removePhoto (evt) {
-    const photoDel = evt.target;
-    photoDel.closest('.photo').remove();
-    buttonLike.removeEventListener('click', activeLike);
-    photo.removeEventListener('click', zoomPhoto);
-    buttonDel.removeEventListener('click', removePhoto);
-  }
-
-  //Функция добавления слушателя кнопке удаления фото
-  const buttonDel = photoElement.querySelector('.button_del');
-  buttonDel.addEventListener('click', removePhoto);
-
-  //Функция увеличения фотографий
-  function zoomPhoto (evt) {
-    const item = evt.target;
-    bigImage.src = item.src;
-    bigImage.alt = `Фото ${item.dataset.name}.`;
-    bigImageTitle.textContent = item.dataset.name;
-    openPopup(popupBigImage);
-  }
-
-  //Функция добавления слушателя фотографиям
-  const photo = photoElement.querySelector('.photo__image');
-  photo.addEventListener('click', zoomPhoto);
-
-  return photoElement;
-}
-
 //Функция для добавления карточек из массива
-initialCards.forEach(function(item) {
-  photoCard.append(addCard(item.name, item.link));
+initialCards.forEach((item) => {
+  const card = new Card(item, '.photo');
+  // Добавляем в DOM
+  photoCard.prepend(card.generateCard());
 });
 
 //Функия для сохранения новой фотографии
-function submitImage (evt) {
+function submitImage(evt) {
   evt.preventDefault();
-  photoCard.prepend(addCard(titleInput.value, linkInput.value));
+  const object = {};
+  object.link = linkInput.value;
+  object.name = titleInput.value;
+
+  const card = new Card(object, '.photo');
+  // Добавляем в DOM
+  photoCard.prepend(card.generateCard());
   closePopup(popupNewImages);
 }
 
 //Функция удаления текста ошибок при открытии формы
-function removeError(elem) {
-  const form = elem.querySelector(formObject.formSelector);
-  const formInputs = Array.from(form.querySelectorAll(formObject.inputSelector));
-  formInputs.forEach((formInput) => {
-    hideInputError(form, formInput, formObject);
+function removeError() {
+  errors.forEach((span) => {
+    span.classList.remove(formObject.errorClass);
+    span.textContent = '';
+  });
+  inputs.forEach((input) => {
+    input.classList.remove(formObject.inputErrorClass);
   });
 }
 
@@ -166,10 +139,8 @@ function openPopupProfile () {
   if (errorName.classList.contains(formObject.errorClass) ||
     errorAbout.classList.contains(formObject.errorClass)) {
     removeError(popupProfile);
-    openPopup(popupProfile);
-  } else {
-    openPopup(popupProfile);
   }
+  openPopup(popupProfile);
 }
 
 //Отвечает за открытие попапа с добавлением фото
@@ -179,10 +150,8 @@ function openPopupNewImages () {
   if (errorPlaceTitle.classList.contains(formObject.errorClass) ||
     errorImageLink.classList.contains(formObject.errorClass)) {
     removeError(popupNewImages);
-    openPopup(popupNewImages);
-  } else {
-    openPopup(popupNewImages);
   }
+  openPopup(popupNewImages);
 }
 
 //Функция для сохранения редактирования профиля
@@ -192,6 +161,15 @@ function formSubmitHandler (evt) {
     profileAbout.textContent = jobInput.value;
     closePopup(popupProfile);
 }
+
+//Функция валидации
+function startValidation() {
+  forms.forEach((form) => {
+    const valid = new FormValidator(formObject, form);
+    valid.enableValidation();
+  });
+}
+startValidation();
 
 formElement.addEventListener('submit', formSubmitHandler);
 formImageElement.addEventListener('submit', submitImage);
