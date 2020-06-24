@@ -32,17 +32,6 @@
 
       <section class='photos content__photos'>
       </section>
-
-      <template id='photo'>
-        <article class='photo'>
-          <img class='photo__image'>
-          <div class='photo__title'>
-            <h2 class='photo__name'></h2>
-            <button class='button button_like' type='button'></button>
-          </div>
-          <button class='button button_del' type='button'></button>
-        </article>
-      </template>
     </main>
 
     <footer class='footer page__footer'>
@@ -86,8 +75,18 @@
         <img class='big-image'>
         <figcaption class='big-image__title'></figcaption>
       </figure>
-
     </section>
+
+    <template id='photo'>
+      <article class='photo'>
+        <img class='photo__image'>
+        <div class='photo__title'>
+          <h2 class='photo__name'></h2>
+          <button class='button button_like' type='button'></button>
+        </div>
+        <button class='button button_del' type='button'></button>
+      </article>
+    </template>
   </div>
   <script type='module' src='./script/index.js'></script>
 </body>

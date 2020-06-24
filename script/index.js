@@ -24,8 +24,6 @@ const overlayNewImages = popupNewImages.querySelector('.popup__overlay');
 const overlayBigImage = popupBigImage.querySelector('.popup__overlay');
 const popups = Array.from(document.querySelectorAll('.popup'));
 const forms = Array.from(document.querySelectorAll('.form'));
-const errors = Array.from(document.querySelectorAll('.form__input-error'));
-const inputs = Array.from(document.querySelectorAll('.form__input'));
 const errorName = document.querySelector('#fullname-error');
 const errorAbout = document.querySelector('#about-error');
 const errorPlaceTitle = document.querySelector('#place-title-error');
@@ -71,7 +69,7 @@ const initialCards = [
 //Функция закрытия попапов кнопкой Esc
 function escClose (evt) {
   if (evt.key === 'Escape') {
-    popups.forEach((popup) => {
+    popups.find((popup) => {
       if (popup.classList.contains('popup_opened')) {
         closePopup(popup);
       }
@@ -79,26 +77,18 @@ function escClose (evt) {
   }
 }
 
-//Функция добавления слушателя кнопки Esc
-function addEscListener (popup) {
-  document.addEventListener('keydown', escClose);
-}
-
-//Функция удаления слушателя кнопки Esc
-function removeEscListener (popup) {
-  document.removeEventListener('keydown', escClose);
-}
-
 //Отвечает за открытие попапов
 export function openPopup (elem) {
   elem.classList.add('popup_opened');
-  addEscListener (elem);
+  //Добавляем слушателя кнопки Esc
+  document.addEventListener('keydown', escClose);
 }
 
 //Отвечает за закрытие попапов
 function closePopup (elem) {
   elem.classList.remove('popup_opened');
-  removeEscListener (elem);
+  //Удаляем слушателя кнопки Esc
+  document.removeEventListener('keydown', () => escClose(elem));
 }
 
 //Функция для добавления карточек из массива
@@ -122,14 +112,20 @@ function submitImage(evt) {
 }
 
 //Функция удаления текста ошибок при открытии формы
-function removeError() {
-  errors.forEach((span) => {
+function removeError(elem) {
+  elem.querySelectorAll('.form__input-error').forEach((span) => {
     span.classList.remove(formObject.errorClass);
     span.textContent = '';
   });
-  inputs.forEach((input) => {
+  elem.querySelectorAll(formObject.inputSelector).forEach((input) => {
     input.classList.remove(formObject.inputErrorClass);
   });
+}
+
+//Функция блокировки кнопки при открытии попапа
+function disabledButton (elem) {
+  elem.querySelector('.button_submit').classList.add('form__submit-inactive');
+  elem.querySelector('.button_submit').disabled = true;
 }
 
 //Отвечает за открытие попапа с редактированием профиля
@@ -141,6 +137,7 @@ function openPopupProfile () {
     removeError(popupProfile);
   }
   openPopup(popupProfile);
+  disabledButton(popupProfile);
 }
 
 //Отвечает за открытие попапа с добавлением фото
@@ -152,6 +149,7 @@ function openPopupNewImages () {
     removeError(popupNewImages);
   }
   openPopup(popupNewImages);
+  disabledButton(popupNewImages);
 }
 
 //Функция для сохранения редактирования профиля
@@ -162,14 +160,12 @@ function formSubmitHandler (evt) {
     closePopup(popupProfile);
 }
 
-//Функция валидации
-function startValidation() {
-  forms.forEach((form) => {
-    const valid = new FormValidator(formObject, form);
-    valid.enableValidation();
-  });
-}
-startValidation();
+//Валидация форм
+const validProfile = new FormValidator(formObject, formElement);
+validProfile.enableValidation();
+
+const validNewImage = new FormValidator(formObject, formImageElement);
+validNewImage.enableValidation();
 
 formElement.addEventListener('submit', formSubmitHandler);
 formImageElement.addEventListener('submit', submitImage);
