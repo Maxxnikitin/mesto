@@ -13,8 +13,7 @@ export class Card {
             .content
             .querySelector('.photo')
             .cloneNode(true);
-        this._element = cardElement;
-        return this._element;
+        return cardElement;
     }
 
     _showPictureBig() {
@@ -27,6 +26,7 @@ export class Card {
 
     generateCard() {
         // Запишем разметку в приватное поле _element.
+        this._element = this._getTemplate();
         this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.photo__image').src = this._picture;

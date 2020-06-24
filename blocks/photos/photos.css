@@ -16,6 +16,7 @@
     grid-template-columns: repeat(2, 1fr);
     -ms-grid-rows: 1fr 1.1667rem 1fr 1.1667rem 1fr;
     grid-template-rows: repeat(3, 1fr);
+    max-width: 600px;
   }
 }
 @media (max-width: 515px) {
@@ -25,5 +26,6 @@
     -ms-grid-rows: 1fr 1.6667rem 1fr 1.6667rem 1fr 1.6667rem 1fr 1.6667rem 1fr 1.6667rem 1fr;
     grid-template-rows: repeat(6, 1fr);
     row-gap: 1.6667rem;
+    max-width: 282px;
   }
 }

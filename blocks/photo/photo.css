@@ -3,7 +3,7 @@
 @import url(./__name/photo__name.css);
 
 .photo {
-  max-width: 282px;
+  width: 100%;
   background-color: #fff;
   border-radius: 10px;
   margin: 0 auto;
