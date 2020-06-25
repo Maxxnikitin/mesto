@@ -1,4 +1,4 @@
-import {openPopup, popupBigImage} from './index.js';
+import {openPopup, popupBigImage} from './utils.js';
 
 export class Card {
     constructor(data, cardSelector) {
@@ -36,7 +36,8 @@ export class Card {
     }
 
     _deleteCard() {
-        this._element.remove()
+        this._element.remove();
+        this._element = null
     };
 
     //Функция добавления слушателя кнопке like

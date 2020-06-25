@@ -1,3 +1,4 @@
+import {openPopup, popupBigImage} from './utils.js';
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
@@ -5,7 +6,6 @@ const buttonEdit = document.querySelector('.button_edit');
 const buttonAdd = document.querySelector('.button_add');
 const popupProfile = document.querySelector('#popup-profile');
 const popupNewImages = document.querySelector('#popup-new-images');
-export const popupBigImage = document.querySelector('#popup-big-image');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const nameInput = document.querySelector('#fullname');
@@ -67,7 +67,7 @@ const initialCards = [
 ];
 
 //Функция закрытия попапов кнопкой Esc
-function escClose (evt) {
+export function escClose (evt) {
   if (evt.key === 'Escape') {
     popups.find((popup) => {
       if (popup.classList.contains('popup_opened')) {
@@ -75,13 +75,6 @@ function escClose (evt) {
       }
     });
   }
-}
-
-//Отвечает за открытие попапов
-export function openPopup (elem) {
-  elem.classList.add('popup_opened');
-  //Добавляем слушателя кнопки Esc
-  document.addEventListener('keydown', escClose);
 }
 
 //Отвечает за закрытие попапов
@@ -121,6 +114,8 @@ function removeError(elem) {
     input.classList.remove(formObject.inputErrorClass);
   });
 }
+
+//Я увидел ваш комментарий, однако позволю себе пока оставить так. 2 часа проковырял, но чё-то так и не сообразил, как правильно сделать, уже голова кипит. Плюс у меня каждая итерация на счету, мне до конца следующей недели ещё две проектных надо сдать, так что боюсь чё-нить напортачить. Но я непременно учту это и в следующей работе попробую реализовать. Благодарю.
 
 //Функция блокировки кнопки при открытии попапа
 function disabledButton (elem) {
