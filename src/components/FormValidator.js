@@ -9,11 +9,11 @@ export class FormValidator {
   }
 
   //Функция добавления класса с ошибкой
-  _showInputError = (
+  _showInputError (
     formElement,
     inputElement,
     errorMessage
-  ) => {
+  ) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -21,7 +21,7 @@ export class FormValidator {
   };
 
   // Функция удаления класса с ошибкой
-  _hideInputError = (formElement, inputElement) => {
+  _hideInputError (formElement, inputElement) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
@@ -29,7 +29,7 @@ export class FormValidator {
   };
 
   // Функция проверки валидности поля
-  _isValid = (formElement, inputElement) => {
+  _isValid (formElement, inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(
         formElement,
@@ -42,14 +42,14 @@ export class FormValidator {
   };
 
   // Функция проверки валидности полей
-  _hasInvalidInput = (inputList) => {
+  _hasInvalidInput (inputList) {
     return inputList.every((inputElement) => {
       return inputElement.validity.valid;
     });
   };
 
   // Функция активации кнопки
-  _toggleButtonState = (inputList, buttonElement) => {
+  _toggleButtonState (inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.remove(this._inactiveButtonClass);
       buttonElement.disabled = false;

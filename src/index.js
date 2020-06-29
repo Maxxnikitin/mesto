@@ -1,11 +1,22 @@
-import {Card} from '../components/Card.js';
-import {PopupWithImage} from '../components/PopupWithImage.js';
-import {Section} from '../components/Section.js';
-import {PopupWithForm} from '../components/PopupWithForm.js';
-import {FormValidator} from '../components/FormValidator.js';
-import {UserInfo} from '../components/UserInfo.js';
-import {removeError} from '../components/utils/utils.js';
-import {disabledButton} from '../components/utils/utils.js';
+//Импорт css файла
+import './pages/index.css';
+
+import {Card} from './components/Card.js';
+import {PopupWithImage} from './components/PopupWithImage.js';
+import {Section} from './components/Section.js';
+import {PopupWithForm} from './components/PopupWithForm.js';
+import {FormValidator} from './components/FormValidator.js';
+import {UserInfo} from './components/UserInfo.js';
+import {removeError} from './components/utils/utils.js';
+import {disabledButton} from './components/utils/utils.js';
+
+//Импорт картинок для Webpack
+import altai from './images/photos/altai.jpg';
+import baikal from './images/photos/baikal.jpg';
+import dombai from './images/photos/dombai.jpg';
+import elbrus from './images/photos/elbrus.jpg';
+import arkhyz from './images/photos/arkhyz.jpg';
+import khakassia from './images/photos/khakassia.jpg';
 
 const buttonEdit = document.querySelector('.button_edit');
 const buttonAdd = document.querySelector('.button_add');
@@ -31,27 +42,27 @@ export const formObject = {
 const items = [
   {
       name: 'Алтай',
-      link: './images/photos/altai.jpg',
+      link: altai,
   },
   {
       name: 'Байкал',
-      link: './images/photos/baikal.jpg',
+      link: baikal,
   },
   {
       name: 'Домбай',
-      link: './images/photos/dombai.jpg',
+      link: dombai,
   },
   {
       name: 'Эльбрус',
-      link: './images/photos/elbrus.jpg',
+      link: elbrus,
   },
   {
       name: 'Архыз',
-      link: './images/photos/arkhyz.jpg',
+      link: arkhyz,
   },
   {
     name: 'Хакасия',
-    link: './images/photos/khakassia.jpg',
+    link: khakassia,
   }
 ];
 

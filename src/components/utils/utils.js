@@ -1,4 +1,4 @@
-import {formObject} from '../../pages/index.js';
+import {formObject} from '../../index.js';
 
 //Функция удаления текста ошибок при открытии формы
 export function removeError(elem) {
