@@ -41,12 +41,12 @@
     <section class='popup' id='popup-profile'>
       <div class='popup__overlay'></div>
       <form class='form' id='form-edit' name='form-profile' method='post' action='#'>
-        <button class='button button_close-item' id='close-profile' type='button'></button>
+        <button class='button button_close-item' id='button_close-item' type='button'></button>
         <fieldset class='form__fieldset'>
           <legend class='form__title form__title_place_profile'>Редактировать профиль</legend>
-          <input class='form__input' id='fullname' type='text' name='fullname' minlength='2' maxlength='40' required pattern='^[A-Za-zА-ЯЁа-яё\s-]+$'>
+          <input class='form__input form__input_name' id='fullname' type='text' name='fullname' minlength='2' maxlength='40' required pattern='^[A-Za-zА-ЯЁа-яё\s-]+$'>
           <span class='form__input-error form__input-error_place_name' id='fullname-error'>  </span>
-          <input class='form__input' id='about' type='text' name='about' minlength='2' maxlength='200' required>
+          <input class='form__input form__input_link' id='about' type='text' name='about' minlength='2' maxlength='200' required>
           <span class='form__input-error form__input-error_place_description' id='about-error'></span>
         </fieldset>
         <button class='button button_submit' type='submit'>Сохранить</button>
@@ -56,12 +56,12 @@
     <section class='popup' id='popup-new-images'>
       <div class='popup__overlay'></div>
       <form class='form' id='form-image' name='form-image' method='post' action='#' novalidate>
-        <button class='button button_close-item' id='close-new-images' type='button'></button>
+        <button class='button button_close-item' id='button_close-item' type='button'></button>
         <fieldset class='form__fieldset'>
           <legend class='form__title form__title_place_images'>Новое место</legend>
-          <input class='form__input' id='place-title' type='text' name='place-title' placeholder='Название' minlength='1' maxlength='30' required pattern='^[A-Za-zА-ЯЁа-яё\s-]+$'>
+          <input class='form__input form__input_name' id='place-title' type='text' name='place-title' placeholder='Название' minlength='1' maxlength='30' required pattern='^[A-Za-zА-ЯЁа-яё\s-]+$'>
           <span class='form__input-error form__input-error_place_name' id='place-title-error'></span>
-          <input class='form__input' id='image-link' type='url' name='image-link' placeholder='Ссылка на картинку' required>
+          <input class='form__input form__input_link' id='image-link' type='url' name='image-link' placeholder='Ссылка на картинку' required>
           <span class='form__input-error form__input-error_place_description' id='image-link-error'></span>
         </fieldset>
         <button class='button button_submit' type='submit'>Создать</button>
@@ -71,7 +71,7 @@
     <section class='popup' id='popup-big-image'>
       <div class='popup__overlay'></div>
       <figure class='popup__big-image'>
-        <button class='button button_close-big' type='button'></button>
+        <button class='button button_close-big' id='button_close-item' type='button'></button>
         <img class='big-image'>
         <figcaption class='big-image__title'></figcaption>
       </figure>
@@ -88,6 +88,6 @@
       </article>
     </template>
   </div>
-  <script type='module' src='./script/index.js'></script>
+  <script type='module' src='./pages/index.js'></script>
 </body>
 </html>

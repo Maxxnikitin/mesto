@@ -1,10 +1,9 @@
-import {openPopup, popupBigImage} from './utils.js';
-
 export class Card {
-    constructor(data, cardSelector) {
+    constructor(cardSelector, {data, handleCardClick}) {
         this._name = data.name;
         this._picture = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -16,18 +15,9 @@ export class Card {
         return cardElement;
     }
 
-    _showPictureBig() {
-        //добавляем поп-ап увеличения картинки, на которую мы нажали
-        document.querySelector('.big-image').src = this._picture;
-        document.querySelector('.big-image').alt = this._name;
-        document.querySelector('.big-image__title').textContent = this._name;
-        openPopup(popupBigImage);
-    }
-
     generateCard() {
         // Запишем разметку в приватное поле _element.
         this._element = this._getTemplate();
-        this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.photo__image').src = this._picture;
         this._element.querySelector('.photo__image').alt = this._name;
@@ -54,7 +44,7 @@ export class Card {
           this._deleteCard(); //слушатель мусорного ведра
       });
       this._element.querySelector('.photo__image').addEventListener('click', () => {
-          this._showPictureBig(); //слушатель увеличенной карточки
+          this._handleCardClick(); //слушатель увеличенной карточки
       });
 
   }
