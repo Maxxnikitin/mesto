@@ -17,7 +17,7 @@ export class FormValidator {
   };
 
   // Функция удаления класса с ошибкой
-  hideInputError (formElement, inputElement) {
+  _hideInputError (formElement, inputElement) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
@@ -29,7 +29,7 @@ export class FormValidator {
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
-      this.hideInputError(formElement, inputElement);
+      this._hideInputError(formElement, inputElement);
     }
   };
 
