@@ -19,6 +19,7 @@
     <main class='content'>
       <section class='profile'>
         <img class='profile__avatar' src='./images/profile/avatar.jpg' alt='аватар.'>
+        <div class='profile__ava-change'></div>
         <div class='profile__info'>
           <div class='profile__title'>
             <h1 class='profile__name'>Жак-Ив Кусто</h1>
@@ -67,6 +68,28 @@
       </form>
     </section>
 
+    <section class='popup' id='popup-new-avatar'>
+      <div class='popup__overlay'></div>
+      <form class='form form_place_avatar' id='form-avatar' name='form-avatar' method='post' action='#' novalidate>
+        <button class='button button_close-item' id='button_close-item' type='button'></button>
+        <fieldset class='form__fieldset'>
+          <legend class='form__title form__title_place_avatar'>Обновить аватар</legend>
+          <input class='form__input form__input_avatar' id='avatar-link' type='url' name='avatar-link' placeholder='Ссылка на картинку' required>
+          <span class='form__input-error form__input-error_place_avatar' id='avatar-link-error'></span>
+        </fieldset>
+        <button class='button button_submit' id='btn-img' type='submit'>Сохранить</button>
+      </form>
+    </section>
+
+    <section class='popup' id='popup-del'>
+      <div class='popup__overlay'></div>
+      <form class='form form_place_del' id='form-del' name='form-del' method='post' action='#' novalidate>
+        <button class='button button_close-item' id='button_close-item' type='button'></button>
+        <h3 class='form__title form__title_place_del'>Вы уверены?</h3>
+        <button class='button button_submit button_place_del' id='btn-img' type='submit'>Да</button>
+      </form>
+    </section>
+
     <section class='popup' id='popup-big-image'>
       <div class='popup__overlay'></div>
       <figure class='popup__big-image'>
@@ -81,7 +104,10 @@
         <img class='photo__image'>
         <div class='photo__title'>
           <h2 class='photo__name'></h2>
-          <button class='button button_like' type='button'></button>
+          <div class='photo__like'>
+            <button class='button button_like' type='button'></button>
+            <p class='photo__like-counter'>0</p>
+          </div>
         </div>
         <button class='button button_del' type='button'></button>
       </article>

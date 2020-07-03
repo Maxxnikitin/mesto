@@ -1,20 +1,25 @@
-@import url(./_place/_profile/form__title_place_profile.css);
-@import url(./_place/_images/form__title_place_images.css);
+@import url(./_place/form__title_place_profile.css);
+@import url(./_place/form__title_place_images.css);
+@import url(./_place/form__title_place_avatar.css);
+@import url(./_place/form__title_place_del.css);
 
 .form__title {
   font-style: normal;
   font-weight: 900;
   color: #000;
-  margin: 0 0 25px;
+  margin: 0 auto 25px;
+  width: 358px;
 }
 
 @media (max-width: 550px) {
   .form__title {
-    margin: 0 0 5px;
+    margin: 0 auto 5px;
+    width: 290px;
   }
 }
 @media (max-width: 400px) {
   .form__title {
-    margin: 0 0 5px;
+    margin: 0 auto 5px;
+    width: 200px;
   }
 }

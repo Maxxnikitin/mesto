@@ -1,0 +1,9 @@
+.form_place_del {
+  height: 181px;
+}
+
+@media (max-width: 400px) {
+  .form_place_del {
+    height: 150px;
+  }
+}
