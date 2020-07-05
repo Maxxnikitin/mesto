@@ -5,23 +5,23 @@ import {Card} from '../components/Card.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {Section} from '../components/Section.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
+import {Popup} from "../components/Popup.js";
 import {FormValidator} from '../components/FormValidator.js';
 import {UserInfo} from '../components/UserInfo.js';
-
-//Импорт картинок для Webpack
-import altai from '../images/photos/altai.jpg';
-import baikal from '../images/photos/baikal.jpg';
-import dombai from '../images/photos/dombai.jpg';
-import elbrus from '../images/photos/elbrus.jpg';
-import arkhyz from '../images/photos/arkhyz.jpg';
-import khakassia from '../images/photos/khakassia.jpg';
+import {Api} from "../components/Api.js";
+import {loading} from "../components/utils/utils.js";
 
 const buttonEdit = document.querySelector('.button_edit');
 const buttonAdd = document.querySelector('.button_add');
 const buttonSubmitInfo = document.querySelector('#btn-info');
 const buttonSubmitImg = document.querySelector('#btn-img');
+const buttonSubmitAvatar = document.querySelector('#btn-avatar');
+const buttonSubmitDel = document.querySelector('#btn-del');
 const popupProfile = document.querySelector('#popup-profile');
 const popupNewImages = document.querySelector('#popup-new-images');
+const popupDel = document.querySelector('#popup-del');
+const popupAvatar = document.querySelector('#popup-new-avatar');
+const editAvatar = document.querySelector('.profile__ava-change');
 const nameInput = document.querySelector('#fullname');
 const jobInput = document.querySelector('#about');
 const formElement = document.querySelector('#form-edit');
@@ -39,33 +39,15 @@ export const formObject = {
   errorClass: 'form__input-error_active',
 };
 
-//Массив изначальных фотографий
-const items = [
-  {
-      name: 'Алтай',
-      link: altai,
+export const token = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-12',
+  headers: {
+    authorization: '83dedcdd-7e88-4905-85f7-b138aebc1b0b',
+    'Content-Type': 'application/json'
   },
-  {
-      name: 'Байкал',
-      link: baikal,
-  },
-  {
-      name: 'Домбай',
-      link: dombai,
-  },
-  {
-      name: 'Эльбрус',
-      link: elbrus,
-  },
-  {
-      name: 'Архыз',
-      link: arkhyz,
-  },
-  {
-    name: 'Хакасия',
-    link: khakassia,
-  }
-];
+};
+
+export const api = new Api(token);
 
 //Попап с увеличенными фото
 const popupBigPicture = new PopupWithImage(popupBigImage);
@@ -73,19 +55,24 @@ const popupBigPicture = new PopupWithImage(popupBigImage);
 //Форма с добавлением фото
 const openFormImage = new PopupWithForm(popupNewImages, {
   submitForm: (item) => {
-      const card = new Card(template, {
-          data: item, handleCardClick: () => {
-            popupBigPicture.open(item);
+    api.addNewCard(item.name, item.link)
+      .then((res) => {
+        const card = new Card(template, () => api.putLike(res._id), () => api.deleteLike(res._id), {
+          data: res, handleCardClick: () => {
+            popupBigPicture.open(res);
           }
-      });
-      const cardElement = card.generateCard();
-      CardList.addItem(cardElement);
-      openFormImage.close();
+        }, () => delPicPopup.submit(res._id));
+        const cardElement = card.generateCard();
+        CardList.addItem(cardElement);
+      })
+      .catch((err) => {
+        console.log(err);
+    })
+    openFormImage.close();
   }
-},);
+});
 
 const openPicForm = function () {
-  //validNewImage.hideInputError(formImageElement, input);
   validNewImage.removeError(formImageElement);
   validNewImage.toggleButtonState(inputList, buttonSubmitImg);
   openFormImage.open();
@@ -94,40 +81,101 @@ const openPicForm = function () {
 export const formProfileInfo = {
   profileAuthor: document.querySelector('.profile__name'),
   profileStatus: document.querySelector('.profile__about'),
+  profileAvatar: document.querySelector('.profile__avatar'),
 };
 
-//Форма с редактированием профиля
 const userInfo = new UserInfo(formProfileInfo);
+
+api.getUserInfo()
+    .then((user) => {
+      userInfo.getUserInfo(user.name, user.info, user.avatar);
+      userInfo.setUserInfo(user);
+
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+//Форма с редактированием профиля
 const openFormInfo = new PopupWithForm(popupProfile, {
   submitForm: (item) => {
-      userInfo.setUserInfo(item);
-      openFormInfo.close();
+    loading(popupProfile);
+    api.updateUserInfo(item.name, item.link)
+      .then((res) => {
+        userInfo.setUserInfo(res)
+        openFormInfo.close()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 });
 
+//Функция открытия попапа с формой редактирования профиля
 const openInfoForm = () => {
+  buttonSubmitInfo.textContent = 'Сохранить';
   const infoUser = userInfo.getUserInfo();
   nameInput.value = infoUser.name;
   jobInput.value = infoUser.info;
-  validNewImage.removeError(formElement);
-  validNewImage.toggleButtonState(inputList, buttonSubmitInfo);
+  validProfile.removeError(formElement);
+  validProfile.toggleButtonState(inputList, buttonSubmitInfo);
   openFormInfo.open();
 }
 
+const delPicPopup = new Popup(popupDel);
+delPicPopup.submit = function (_id) {
+  delPicPopup.open();
+  popupDel.addEventListener('submit', evt => {
+    evt.preventDefault();
+    document.getElementById(_id).remove();
+    api.delCard(_id);
+    this.close();
+  });
+};
+
+const changeAvatar = new PopupWithForm(popupAvatar, {
+  submitForm: (item) => {
+    loading(popupAvatar);
+    api.setUserAvatar(item.link)
+      .then((item) => {
+        userInfo.makeUserAvatar(item);
+      })
+      .then(() => {
+        changeAvatar.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+});
+
 const CardList = new Section({
-  items, renderer: (item) => {
-      const card = new Card(template, {
-          data: item, handleCardClick: () => {
-              popupBigPicture.open(item);
-          }
-      });
-      const cardElement = card.generateCard();
-      CardList.addItem(cardElement);
+  renderer: (item) => {
+    const card = new Card(template, () => api.putLike(item._id), () => api.delLike(item._id), {
+      data: item, handleCardClick: () => {
+        popupBigPicture.open(item);
+      }
+    }, () => delPicPopup.submit(item._id));
+    const cardElement = card.generateCard();
+    CardList.addItem(cardElement);
   }
 }, photoCard);
 
-CardList.renderItems(items);
 
+api.getInitialCards()
+    .then((items) => {
+      CardList.renderItems(items);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+//Функция открытия формы смены аватарки
+const openNewAvatar = () => {
+  buttonSubmitAvatar.textContent = 'Сохранить';
+  validNewAvatar.removeError(popupAvatar);
+  validNewAvatar.toggleButtonState(inputList, buttonSubmitAvatar);
+  changeAvatar.open();
+}
 
 //Валидация форм
 const validProfile = new FormValidator(formObject, formElement);
@@ -136,5 +184,9 @@ validProfile.enableValidation();
 const validNewImage = new FormValidator(formObject, formImageElement);
 validNewImage.enableValidation();
 
+const validNewAvatar = new FormValidator(formObject, popupAvatar);
+validNewAvatar.enableValidation();
+
+editAvatar.addEventListener('click', () => openNewAvatar());
 buttonAdd.addEventListener("click", () => openPicForm());
 buttonEdit.addEventListener("click", () => openInfoForm());

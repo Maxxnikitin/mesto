@@ -7,10 +7,13 @@
 @import url(../blocks/logo/logo.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/button/button.css);
+@import url(../blocks/button/_place/button_place_del.css);
 @import url(../blocks/photos/photos.css);
 @import url(../blocks/photo/photo.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/_place/form_place_avatar.css);
+@import url(../blocks/form/_place/form_place_del.css);
 @import url(../blocks/big-image/big-image.css);
 @import url(../blocks/footer/footer.css);

@@ -4,8 +4,10 @@
 @import url(./__info/profile__info.css);
 @import url(./__name/profile__name.css);
 @import url(./__about/profile__about.css);
+@import url(./__ava-change/profile__ava-change.css);
 
 .profile {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

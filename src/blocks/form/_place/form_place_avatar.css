@@ -1,0 +1,15 @@
+.form_place_avatar {
+  height: 272px;
+}
+
+@media (max-width: 550px) {
+  .form_place_avatar {
+    height: 218px;
+  }
+}
+
+@media (max-width: 400px) {
+  .form_place_avatar {
+    height: 200px;
+  }
+}
