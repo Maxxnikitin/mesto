@@ -6,6 +6,7 @@
 @import url(./_close-item/button_close-item.css);
 @import url(./_del/button_del.css);
 @import url(./_close-big/button_close-big.css);
+@import url(./_del-invisible/button_del-invisible.css);
 
 .button {
   cursor: pointer;

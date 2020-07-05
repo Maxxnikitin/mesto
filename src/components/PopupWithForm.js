@@ -12,11 +12,12 @@ export class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    const item = {
-      name: this.popupSelector.querySelector('.form__input_name').value,
-      link: this.popupSelector.querySelector('.form__input_link').value
-    };
-    return item;
+    this._inputList = this.popupSelector.querySelectorAll('.form__input');
+    this._formValues = {};
+    this._inputList.forEach(input => {
+      this._formValues[input.name] = input.value;
+    });
+    return this._formValues;
   }
 
   close() {
