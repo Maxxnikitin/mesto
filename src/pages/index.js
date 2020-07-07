@@ -16,7 +16,6 @@ const buttonAdd = document.querySelector('.button_add');
 const buttonSubmitInfo = document.querySelector('#btn-info');
 const buttonSubmitImg = document.querySelector('#btn-img');
 const buttonSubmitAvatar = document.querySelector('#btn-avatar');
-const buttonSubmitDel = document.querySelector('#btn-del');
 const popupProfile = document.querySelector('#popup-profile');
 const popupNewImages = document.querySelector('#popup-new-images');
 const popupDel = document.querySelector('#popup-del');
@@ -61,7 +60,7 @@ const openFormImage = new PopupWithForm(popupNewImages, {
           data: res, handleCardClick: () => {
             popupBigPicture.open(res);
           }
-        }, () => delPicPopup.submit(res._id));
+        }, () => delPicPopup.submit(res._id), {userId});
         const cardElement = card.generateCard();
         CardList.addItem(cardElement);
       })
@@ -87,13 +86,17 @@ export const formProfileInfo = {
 const userInfo = new UserInfo(formProfileInfo);
 
 api.getUserInfo()
-    .then((user) => {
-      userInfo.getUserInfo(user.name, user.info, user.avatar);
-      userInfo.setUserInfo(user);
+  .then((user) => {
+    userInfo.getUserInfo(user.name, user.info, user.avatar);
+    userInfo.setUserInfo(user);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
-    })
-    .catch((err) => {
-      console.log(err);
+let userId = api.getUserInfo()
+  .then((res) => {
+    userId = res;
     });
 
 //Форма с редактированием профиля
@@ -128,7 +131,7 @@ delPicPopup.submit = function (_id) {
   popupDel.addEventListener('submit', evt => {
     evt.preventDefault();
     document.getElementById(_id).remove();
-    api.delCard(_id);
+    api.deleteCard(_id);
     this.close();
   });
 };
@@ -151,11 +154,11 @@ const changeAvatar = new PopupWithForm(popupAvatar, {
 
 const CardList = new Section({
   renderer: (item) => {
-    const card = new Card(template, () => api.putLike(item._id), () => api.delLike(item._id), {
+    const card = new Card(template, () => api.putLike(item._id), () => api.deleteLike(item._id), {
       data: item, handleCardClick: () => {
         popupBigPicture.open(item);
       }
-    }, () => delPicPopup.submit(item._id));
+    }, () => delPicPopup.submit(item._id), {userId});
     const cardElement = card.generateCard();
     CardList.addItem(cardElement);
   }

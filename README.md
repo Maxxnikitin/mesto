@@ -30,6 +30,6 @@
 
 * [Ссылка 1 на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4);
 * [Ссылка 2 на макет в Figma](https://www.figma.com/file/nlYpT4VhFiwimn2YlncrcF/JavaScript.-Sprint-5?node-id=0%3A1);
-* [Ссылка на проект в GHPages](https://maxxnikitin.github.io/mesto/index.html)
+* [Ссылка на проект в GHPages](https://maxxnikitin.github.io/mesto)
 
 

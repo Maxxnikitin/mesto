@@ -76,7 +76,7 @@ export class Api {
     .then((data) => data);
   }
 
-  delCard(id) {
+  deleteCard(id) {
     return fetch(`${this.baseUrl}/cards/${id}`, {
       method: 'DELETE',
       headers: this.headers,
@@ -89,7 +89,7 @@ export class Api {
     });
   };
 
-  delLike(cardId) {
+  deleteLike(cardId) {
     return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: 'DELETE',
       headers: this.headers

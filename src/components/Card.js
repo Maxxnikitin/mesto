@@ -1,14 +1,15 @@
 export class Card {
-  constructor(cardSelector, putLike, delLike, {data, handleCardClick},  delCard) {
+  constructor(cardSelector, putLike, deleteLike, {data, handleCardClick},  deleteCard, {userId}) {
     this._name = data.name;
     this._picture = data.link;
     this._likes = data.likes;
     this._id = data._id;
     this._owner = data.owner._id;
+    this._userId = userId._id;
     this._putLike = putLike;
-    this._delLike = delLike;
+    this._deleteLike = deleteLike;
     this._cardSelector = cardSelector;
-    this._delCard = delCard;
+    this._deleteCard = deleteCard;
     this._handleCardClick = handleCardClick;
   }
 
@@ -24,7 +25,7 @@ export class Card {
   }
 
   _whoIsOwner(_owner) {
-    if (this._owner === '6846d4e780db340ba17dae26') {
+    if (this._owner === this._userId) {
     } else {
         this._element.querySelector('.button_del').classList.add('button_del-invisible');
     }
@@ -40,14 +41,14 @@ export class Card {
     photoImg.alt = this._name;
     photoName.textContent = this._name;
     this._whoIsOwner(this._owner)
-    if (this._likes.find(item => item._id === '6846d4e780db340ba17dae26')) {
+    if (this._likes.find(item => item._id === this._userId)) {
       this._element.querySelector('.button_like').classList.add('button_like-active');
     }
     return this._element;
   }
 
   _cardDel() {
-    this._delCard();
+    this._deleteCard();
     this._element.removeEventListener('click', this._cardHandler);
   }
 
@@ -60,16 +61,17 @@ export class Card {
 
   //Функция добавления слушателя кнопке like
   _showLike() {
-    //this._element.querySelector('.button_like').classList.toggle('button_like-active');
-    if (this._element.querySelector('.button_like').classList.contains('button_like-active')) {
-      this._element.querySelector('.button_like').classList.remove('button_like-active');
-      this._element.querySelector('.photo__like-counter').textContent = this._likes.length -= 1;
-      this._delLike(this._id);
+    this.buttonLike = this._element.querySelector('.button_like');
+    this.likeCounter = this._element.querySelector('.photo__like-counter');
+    if (this.buttonLike.classList.contains('button_like-active')) {
+      this.buttonLike.classList.remove('button_like-active');
+      this.likeCounter.textContent = this._likes.length -= 1;
+      this._deleteLike(this._id);
       return;
     }
-    this._element.querySelector('.button_like').classList.add('button_like-active');
+    this.buttonLike.classList.add('button_like-active');
     this._putLike(this._id);
-    this._element.querySelector('.photo__like-counter').textContent = this._likes.length += 1;
+    this.likeCounter.textContent = String(this._likes.length += 1);
   }
 
   //Функция добавления слушателей
