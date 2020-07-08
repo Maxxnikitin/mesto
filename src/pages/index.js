@@ -51,17 +51,22 @@ export const api = new Api(token);
 //Попап с увеличенными фото
 const popupBigPicture = new PopupWithImage(popupBigImage);
 
+//Функция создания карточки
+function createCard(arr) {
+  const card = new Card(template, () => api.putLike(arr._id), () => api.deleteLike(arr._id), {
+    data: arr, handleCardClick: () => {
+      popupBigPicture.open(arr);
+    }
+  }, () => delPicPopup.submit(arr._id), {userId});
+  return card;
+}
+
 //Форма с добавлением фото
 const openFormImage = new PopupWithForm(popupNewImages, {
   submitForm: (item) => {
     api.addNewCard(item.name, item.link)
       .then((res) => {
-        const card = new Card(template, () => api.putLike(res._id), () => api.deleteLike(res._id), {
-          data: res, handleCardClick: () => {
-            popupBigPicture.open(res);
-          }
-        }, () => delPicPopup.submit(res._id), {userId});
-        const cardElement = card.generateCard();
+        const cardElement = createCard(res).generateCard();
         CardList.addItem(cardElement);
       })
       .catch((err) => {
@@ -128,12 +133,19 @@ const openInfoForm = () => {
 const delPicPopup = new Popup(popupDel);
 delPicPopup.submit = function (_id) {
   delPicPopup.open();
-  popupDel.addEventListener('submit', evt => {
+  function popupDelListener(evt) {
     evt.preventDefault();
     document.getElementById(_id).remove();
-    api.deleteCard(_id);
-    this.close();
-  });
+    api.deleteCard(_id)
+      .then(() => {
+        delPicPopup.close();
+        popupDel.removeEventListener('submit', popupDelListener);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+  popupDel.addEventListener('submit', popupDelListener);
 };
 
 const changeAvatar = new PopupWithForm(popupAvatar, {
@@ -154,12 +166,7 @@ const changeAvatar = new PopupWithForm(popupAvatar, {
 
 const CardList = new Section({
   renderer: (item) => {
-    const card = new Card(template, () => api.putLike(item._id), () => api.deleteLike(item._id), {
-      data: item, handleCardClick: () => {
-        popupBigPicture.open(item);
-      }
-    }, () => delPicPopup.submit(item._id), {userId});
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item).generateCard();
     CardList.addItem(cardElement);
   }
 }, photoCard);
